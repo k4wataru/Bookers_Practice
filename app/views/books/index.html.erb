@@ -15,19 +15,30 @@
   <% @books.each do |book| %>
     <tbody>
       <td>
-        <%= link_to book.title, book_path %>
+        <%= book.title %>
       </td>
       <td>
         <%= book.body %>
       </td>
       <td>
-
+        <%= link_to "Show", book_path(book.id) %>
+        <%= link_to "Edit", edit_book_path(book.id) %>
+        <%= link_to "Destroy", book_path(book.id), method: :delete %>
       </td>
     </tbody>
   <% end %>
 </table>
 <h2>New Book</h2>
-<%= form_with model: @book, url: '/books', method: :post do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :body %>
-<% end %>
+<div class="form">
+  <%= form_with model: @book, url: '/books', method: :post do |f| %>
+    <div class="field">
+      <h4>Title</h4>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <h4>Body</h4>
+      <%= f.text_area :body %>
+    </div>
+    <%= f.submit 'Create Book' %>
+  <% end %>
+</div>

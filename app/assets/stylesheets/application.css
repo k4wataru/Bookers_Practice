@@ -13,8 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ 
+
 body {
   margin: 33px;
+  font-family: verdana, arial, helvetica, sans-serif;
 }
 
 p {
@@ -24,4 +27,13 @@ p {
 
 th {
   padding-bottom: 5px;
+}
+
+.field {
+  display: block;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 13px;
 }
