@@ -23,12 +23,20 @@
       <td>
         <%= link_to "Show", book_path(book.id) %>
         <%= link_to "Edit", edit_book_path(book.id) %>
-        <%= link_to "Destroy", book_path(book.id), method: :delete %>
+        <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
       </td>
     </tbody>
   <% end %>
 </table>
 <h2>New Book</h2>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました。
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div class="form">
   <%= form_with model: @book, url: '/books', method: :post do |f| %>
     <div class="field">
